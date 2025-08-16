@@ -1,0 +1,2 @@
+# CustomShooter
+A Rust Plugin
