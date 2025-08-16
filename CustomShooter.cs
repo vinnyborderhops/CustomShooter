@@ -86,12 +86,13 @@ namespace Oxide.Plugins
 
             foreach (var gun in config.Guns)
             {
-            gun.Ammo = config.AmmoList.FirstOrDefault(a => a.AmmoName.Equals(gun.AmmoName, System.StringComparison.OrdinalIgnoreCase));
-            if (gun.Ammo == null && BuildInfo.isDevBuild) // only warn in dev
-            PrintWarning($"Ammo not found for gun {gun.CustomName} (AmmoName: {gun.AmmoName})");
-            }
+                gun.Ammo = config.AmmoList.FirstOrDefault(a => a.AmmoName.Equals(gun.AmmoName, System.StringComparison.OrdinalIgnoreCase));
 
+                if (gun.Ammo == null)
+                {PrintWarning($"Ammo not found for gun {gun.CustomName} (AmmoName: {gun.AmmoName})");}
+            }
         }
+
 
         object OnWeaponFired(BaseProjectile projectile, BasePlayer player)
         {
